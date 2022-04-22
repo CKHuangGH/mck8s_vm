@@ -1,0 +1,32 @@
+apiVersion: fogguru.eu/v1                                                                                
+kind: MultiClusterDeployment                                                                             
+metadata:                                                                                                
+  name: preferred                                                                                            
+spec:                                                                                                    
+  locations: cluster1                                                                                                                                                               
+  selector:                                                                                              
+    matchLabels:                                                                                         
+      app: preferred                                                                                         
+      tier: backend                                                                                      
+      track: stable                                                                                      
+  replicas: 1                                                                                            
+  template:                                                                                              
+    metadata:                                                                                            
+      labels:                                                                                            
+        app: preferred                                                                                       
+        tier: backend                                                                                    
+        track: stable                                                                                    
+    spec:                                                                                                
+      containers:                                                                                        
+        - name: preferred                                                                                    
+          image: docker.io/library/nginx                                               
+          resources:                                                                                     
+            requests:                                                                                    
+              memory: 102Mi                                                                             
+              cpu: 100m                                                                                 
+            limits:                                                                                      
+              memory: 102Mi                                                                             
+              cpu: 100m                                                                                 
+          ports:                                                                                         
+            - name: http                                                                                 
+              containerPort: 80
