@@ -1,5 +1,12 @@
 for i in `seq 0 1`
 do
+    sed -i 's/kubernetes-admin/k8s-admin-cluster'$i'/g' ~/.kube/cluster$i
+    sed -i 's/name: kubernetes/name: cluster'$i'/g' ~/.kube/cluster$i
+    sed -i 's/cluster: kubernetes/cluster: cluster'$i'/g' ~/.kube/cluster$i
+done
+
+for i in `seq 0 1`
+do
     string=$string"/root/.kube/cluster$i:"
 done
 string=$string | sed "s/.$//g"
@@ -12,15 +19,13 @@ done
 
 # Install helm3
 echo "Helm3"
-wget --tries=0 https://github.com/helm/helm/releases/download/v3.8.2/helm-v3.8.2-linux-amd64.tar.gz.asc
-tar xzvf helm-v3.8.2-linux-amd64.tar.gz.asc
+wget -c https://get.helm.sh/helm-v3.8.2-linux-amd64.tar.gz
+tar xzvf helm-v3.8.2-linux-amd64.tar.gz
 mv linux-amd64/helm /usr/local/bin/
 helm repo add stable https://charts.helm.sh/stable
 helm repo add cilium https://helm.cilium.io/
 helm repo add prometheus-community https://prometheus-community.github.io/helm-charts
 helm repo update
-
-
 
 for i in `seq 0 1`
 do
@@ -29,21 +34,12 @@ do
 	helm install cilium cilium/cilium --version 1.11.3 --namespace kube-system --set cluster.name=cluster$i --set cluster.id=$i
 done
 
-
-
-
-
-
-
-
-
-
-mv /root/mck8s_vm/metrics_server.yaml /root/
+#mv /root/mck8s_vm/metrics_server.yaml /root/
 
 for i in `seq 0 1`
 do
 kubectl config use-context cluster$i
-kubectl label nodes cluster$i-control-plane node=master
+#kubectl label nodes cluster$i-control-plane node=master
 KUBE_EDITOR="sed -i s/metricsBindAddress:.*/metricsBindAddress:\ "0.0.0.0:10249"/g" kubectl edit cm/kube-proxy -n kube-system
 kubectl delete pod -l k8s-app=kube-proxy -n kube-system
 docker cp /root/.kube/config cluster$i-control-plane:/root/.kube
