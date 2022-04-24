@@ -1,8 +1,5 @@
-echo "write the IP address and Port to value.yaml"
-docker ps --format "{{.Ports}}{{.Names}}" |grep control| cut -f 1 -d ":" > address
-docker ps --format "{{.Ports}}{{.Names}}" |grep control| cut -f 5 -d ":" | cut -f 1 -d "-" > port
-i=$(awk "NR==1" address)
-port=$(awk "NR==1" port)
+i=$(awk "NR==1" node_list)
+port=30901
 echo "      - job_name: 'rntsm' " >> values.yaml
 echo "        scrape_interval: 5s" >> values.yaml
 echo "        metrics_path: /metrics" >> values.yaml

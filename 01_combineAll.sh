@@ -47,8 +47,8 @@ do
     sleep 5
 done
 
-#mv /root/mck8s_vm/metrics_server.yaml /root/
 sleep 10
+
 for i in `seq 0 1`
 do
 kubectl config use-context cluster$i

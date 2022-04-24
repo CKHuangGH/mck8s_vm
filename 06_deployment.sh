@@ -1,5 +1,3 @@
-# put config to container
-docker cp /root/.kube/config cluster0-control-plane:/root/.kube
 # apply all crds
 kubectl config use-context cluster0
 kubectl apply -f manifests/crds/01_rbac_mck8s.yaml
