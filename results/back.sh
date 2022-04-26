@@ -82,9 +82,6 @@ do
 done
 
 sleep 5
-dool -t -c -m -n -N eno1 --freespace -s --output psr.csv 1 120
-
-sleep 5
 INTERVAL=1
 OUTNAME=dockerstats.csv
 i=0
