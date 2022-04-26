@@ -24,6 +24,10 @@ for i in $(cat node_list)
 do
 	ssh-keyscan $i >> /root/.ssh/known_hosts
 	scp /root/.kube/config root@$i:/root/.kube
+	ssh root@$i wget -c https://github.com/scottchiefbaker/dool/archive/refs/tags/v1.0.0.tar.gz
+	ssh root@$i tar xzvf v1.0.0.tar.gz
+	ssh root@$i mv dool-1.0.0/dool /usr/local/bin/
+
 done
 
 # Install helm3
