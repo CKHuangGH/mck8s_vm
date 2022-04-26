@@ -27,8 +27,13 @@ do
 	ssh root@$i wget -c https://github.com/scottchiefbaker/dool/archive/refs/tags/v1.0.0.tar.gz
 	ssh root@$i tar xzvf v1.0.0.tar.gz
 	ssh root@$i mv dool-1.0.0/dool /usr/local/bin/
-
+    ssh root@$i mv dool-1.0.0/plugins/ /usr/local/bin/
 done
+
+ssh -o StrictHostKeyChecking=no root@10.158.0.3 wget -c https://github.com/scottchiefbaker/dool/archive/refs/tags/v1.0.0.tar.gz
+ssh -o StrictHostKeyChecking=no root@10.158.0.3 tar xzvf /root/v1.0.0.tar.gz
+ssh -o StrictHostKeyChecking=no root@10.158.0.3 mv /root/dool-1.0.0/dool /usr/local/bin/
+ssh -o StrictHostKeyChecking=no root@10.158.0.3 mv /root/dool-1.0.0/plugins/ /usr/local/bin/
 
 # Install helm3
 echo "Helm3"
