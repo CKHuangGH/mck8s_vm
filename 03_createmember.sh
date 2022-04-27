@@ -1,5 +1,5 @@
 sed -i '1d' node_list
-port=54088
+port=30901
 j=1
 for i in $(cat node_list)
 do

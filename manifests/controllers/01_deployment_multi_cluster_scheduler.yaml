@@ -13,7 +13,7 @@ spec:
         app: multiclusterscheduler
     spec:
       nodeSelector:
-        kubernetes.io/hostname: "cluster0-control-plane"
+        node-role.kubernetes.io/master: ""
       tolerations:
       - key: "node-role.kubernetes.io/master"
         operator: "Equal"
