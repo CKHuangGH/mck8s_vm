@@ -1,3 +1,10 @@
-curl http://10.158.0.2:30901/metrics > text
-ls -alh text > plaintext
-mv plaintext /root/mck8s_vm/results/results/plaintext
+TimerForNode=1
+NodeTime=0
+
+while ((NodeTime < 600))
+do
+  curl http://10.158.0.2:30901/metrics > text 
+  ls -al text >> plaintext
+  sleep $TimerForNode;
+  NodeTime=$NodeTime+1
+done
