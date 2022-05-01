@@ -51,7 +51,7 @@ for i in `seq 0 1`
 do
     kubectl config use-context cluster$i
 	helm repo update
-	helm install cilium cilium/cilium --version 1.11.3 --namespace kube-system --set cluster.name=cluster$i --set cluster.id=$i
+	helm install cilium cilium/cilium --version 1.11.4 --namespace kube-system --set cluster.name=cluster$i --set cluster.id=$i
     echo "wait for 5 secs"
     sleep 5
 done
