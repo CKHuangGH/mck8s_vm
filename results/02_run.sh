@@ -7,12 +7,12 @@ chmod 777 vmdool.sh
 chmod 777 text.sh
 chmod 777 cross.sh
 
+python3 scrapetime.py &
 ./toppodd.sh &
 ./toppodkf.sh &
 ./toppodks.sh &
 ./vmdool.sh &
 ./topnode.sh &
 ./toppodm.sh &
-./cross.sh &
+ssh root@10.158.0.3 timeout 600 tcpdump -i ens3 src port 31580 and host 10.158.4.2 -nn -q >> cross  &
 ./text.sh
-python3 scrapetime.py &

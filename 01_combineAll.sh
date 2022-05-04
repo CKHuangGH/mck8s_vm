@@ -29,6 +29,8 @@ do
 	ssh root@$i mv dool-1.0.0/dool /usr/local/bin/
     ssh root@$i mv dool-1.0.0/plugins/ /usr/local/bin/
 done
+
+ssh-keyscan 10.158.0.3 >> /root/.ssh/known_hosts
 ssh -o StrictHostKeyChecking=no root@10.158.0.3 mkdir /root/.kube
 scp /root/.kube/config root@10.158.0.3:/root/.kube
 ssh -o StrictHostKeyChecking=no root@10.158.0.3 wget -c https://github.com/scottchiefbaker/dool/archive/refs/tags/v1.0.0.tar.gz
