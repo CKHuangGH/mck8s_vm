@@ -12,7 +12,7 @@ update_file_podm2() {
   echo $(date +'%s.%N') | tee --append $NameForPodM2;
 }
 
-while ((PodMTime < 600))
+while ((PodMTime < 1200))
 do
   update_file_podm
   update_file_podm2

@@ -13,7 +13,7 @@ update_file_node2() {
   echo $(date +'%s.%N') | tee --append $NameForTopNode2;
 }
 
-while ((NodeTime < 600))
+while ((NodeTime < 1200))
 do
   update_file_node
   update_file_node2

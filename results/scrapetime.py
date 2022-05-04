@@ -16,7 +16,7 @@ def test():
             f.write("\n")
             f.close
 i=0
-while i<600:
+while i<1200:
     test()
     time.sleep(1)
     i+=1

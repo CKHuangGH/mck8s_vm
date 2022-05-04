@@ -10,7 +10,7 @@ update_file_podks2() {
   kubectl --context cluster1 top pod -n kube-system | tr -s '[:blank:]' ',' | tee --append $NameForPodKS2;
   echo $(date +'%s.%N') | tee --append $NameForPodKS2;
 }
-while ((PodKSTime < 600))
+while ((PodKSTime < 1200))
 do
   update_file_podks
   update_file_podks2
