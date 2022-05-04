@@ -29,7 +29,7 @@ do
 	ssh root@$i mv dool-1.0.0/dool /usr/local/bin/
     ssh root@$i mv dool-1.0.0/plugins/ /usr/local/bin/
 done
-
+ssh -o StrictHostKeyChecking=no root@10.158.0.3 sudo apt-get install vim -y
 ssh -o StrictHostKeyChecking=no root@10.158.0.3 ssh-keyscan 10.158.0.2 >> /root/.ssh/known_hosts
 ssh -o StrictHostKeyChecking=no root@10.158.0.3 mkdir /root/.kube
 scp /root/.kube/config root@10.158.0.3:/root/.kube
