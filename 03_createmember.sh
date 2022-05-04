@@ -7,4 +7,5 @@ do
 	echo "$i:$port:$name" >> member	
     j=$((j+1))				
 done
-mv member /root/member
+#mv member /root/member
+scp member root@10.158.0.3:/root/member

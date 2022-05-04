@@ -1,6 +1,6 @@
 TimerForPodM=1
 NameForPodM=kubetopPodM.csv
-NameForPodM=kubetopPodM2.csv
+NameForPodM2=kubetopPodM2.csv
 PodMTime=0
 update_file_podm() {
   kubectl --context cluster0 top pod -n monitoring | tr -s '[:blank:]' ',' | tee --append $NameForPodM;

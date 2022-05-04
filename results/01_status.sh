@@ -4,7 +4,7 @@ cp /root/mck8s_vm/node_list /root/mck8s_vm/results/node_list
 for i in $(cat node_list)
 do 
 	echo "ping $i"
-	ping $i -c 4 >> /root/mck8s_mv/results/results/ping.txt
+	ping $i -c 4 >> /root/mck8s_vm/results/results/ping.txt
 done
 
 read -p "please input end:" end
@@ -30,9 +30,7 @@ kubectl --context cluster0 get pod -n kube-federation-system >> /root/mck8s_vm/r
 echo "-------------------------" >> /root/mck8s_vm/results/results/status.txt
 kubectl --context cluster0 get pod  >> /root/mck8s_vm/results/results/status.txt
 echo "-------------------------" >> /root/mck8s_vm/results/results/status.txt
-kubectl --context cluster0 get node >> /root/mck8s_vm/results/results/status.txt
-echo "-------------------------" >> /root/mck8s_vm/results/results/status.txt
 kubectl --context cluster0 describe node >> /root/mck8s_vm/results/results/status.txt
-echo "-------------------------" >> /root/mck8s_vm/results/results/status.txt
-kubectl --context cluster0 get pod -n monitoring >> /root/mck8s_vm/results/results/status.txt
+echo "-----------cluster1--------------" >> /root/mck8s_vm/results/results/status.txt
+kubectl --context cluster1 describe node >> /root/mck8s_vm/results/results/status.txt
 	
