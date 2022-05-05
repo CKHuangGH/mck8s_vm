@@ -19,5 +19,4 @@ do
     echo "            labels:" >> values.yaml
     echo "              cluster_name: $name" >> values.yaml						
     j=$((j+1))
-        done
 done
