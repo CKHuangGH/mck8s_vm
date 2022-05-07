@@ -31,12 +31,9 @@ do
 done
 ssh -o StrictHostKeyChecking=no root@10.158.0.3 sudo apt-get install vim -y
 ssh -o StrictHostKeyChecking=no root@10.158.0.3 ssh-keyscan 10.158.0.2 >> /root/.ssh/known_hosts
+ssh-keyscan 10.158.0.3 >> /root/.ssh/known_hosts
 ssh -o StrictHostKeyChecking=no root@10.158.0.3 mkdir /root/.kube
 scp /root/.kube/config root@10.158.0.3:/root/.kube
-ssh -o StrictHostKeyChecking=no root@10.158.0.3 wget -c https://github.com/scottchiefbaker/dool/archive/refs/tags/v1.0.0.tar.gz
-ssh -o StrictHostKeyChecking=no root@10.158.0.3 tar xzvf /root/v1.0.0.tar.gz
-ssh -o StrictHostKeyChecking=no root@10.158.0.3 mv /root/dool-1.0.0/dool /usr/local/bin/
-ssh -o StrictHostKeyChecking=no root@10.158.0.3 mv /root/dool-1.0.0/plugins/ /usr/local/bin/
 
 # Install helm3
 echo "Helm3"
