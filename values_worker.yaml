@@ -10,3 +10,8 @@ prometheus:
     - key: "node-role.kubernetes.io/master"
       operator: "Equal"
       effect: "NoSchedule"
+prometheus-node-exporter:
+  resources:
+    requests:
+      cpu: 100m
+      memory: 30Mi

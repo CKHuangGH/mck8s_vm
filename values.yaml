@@ -1,3 +1,8 @@
+prometheus-node-exporter:
+  resources:
+    requests:
+      cpu: 100m
+      memory: 30Mi
 kubeEtcd:
   service:
     port: 2381
