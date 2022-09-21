@@ -1,5 +1,4 @@
 ## install vim
-sudo apt-get install vim -y
 
 for i in `seq 0 3`
 do
@@ -20,15 +19,16 @@ do
     kubectl config rename-context k8s-admin-cluster$i@kubernetes cluster$i
 done
 
-for i in $(cat node_list)
-do
-	ssh-keyscan $i >> /root/.ssh/known_hosts
-	#scp /root/.kube/config root@$i:/root/.kube
-	ssh root@$i wget -c https://github.com/scottchiefbaker/dool/archive/refs/tags/v1.0.0.tar.gz
-	ssh root@$i tar xzvf v1.0.0.tar.gz
-	ssh root@$i mv dool-1.0.0/dool /usr/local/bin/
-    ssh root@$i mv dool-1.0.0/plugins/ /usr/local/bin/
-done
+# for i in $(cat node_list)
+# do
+	# ssh-keyscan $i >> /root/.ssh/known_hosts
+	# #scp /root/.kube/config root@$i:/root/.kube
+	# ssh root@$i wget -c https://github.com/scottchiefbaker/dool/archive/refs/tags/v1.0.0.tar.gz
+	# ssh root@$i tar xzvf v1.0.0.tar.gz
+	# ssh root@$i mv dool-1.0.0/dool /usr/local/bin/
+    # ssh root@$i mv dool-1.0.0/plugins/ /usr/local/bin/
+# done
+
 ssh -o StrictHostKeyChecking=no root@10.158.0.3 sudo apt-get install vim -y
 ssh -o StrictHostKeyChecking=no root@10.158.0.3 ssh-keyscan 10.158.0.2 >> /root/.ssh/known_hosts
 ssh-keyscan 10.158.0.3 >> /root/.ssh/known_hosts
@@ -77,11 +77,9 @@ echo "wait for 5 secs"
 sleep 5
 done
 
-
-
 #Deploy metrics server
 #wget https://gist.githubusercontent.com/moule3053/1b14b7898fd473b4196bdccab6cc7b48/raw/916f4362bcde612d0f96af48bc7ef7b99ab06a1f/metrics_server.yaml
-for i in `seq 0 1`
+for i in `seq 0 3`
 do
     kubectl --context=cluster$i create -f metrics_server.yaml
     echo "wait for 2 secs"

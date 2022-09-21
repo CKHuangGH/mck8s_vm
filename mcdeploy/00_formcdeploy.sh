@@ -22,6 +22,4 @@ do
 	ssh root@$i kubectl get pod -n monitoring
 done
 
-
-
 echo "good to start run error"
