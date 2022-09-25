@@ -1,0 +1,33 @@
+apiVersion: fogguru.eu/v1                                                                                
+kind: MultiClusterDeployment                                                                             
+metadata:                                                                                                
+  name: worst                                                                                            
+spec:                                                                                                    
+  numberOfLocations: 1                                                                                  
+  placementPolicy: worst_fit                                                                             
+  selector:                                                                                              
+    matchLabels:                                                                                         
+      app: worst                                                                                         
+      tier: backend                                                                                      
+      track: stable                                                                                      
+  replicas: 2                                                                                            
+  template:                                                                                              
+    metadata:                                                                                            
+      labels:                                                                                            
+        app: worst                                                                                       
+        tier: backend                                                                                    
+        track: stable                                                                                    
+    spec:                                                                                                
+      containers:                                                                                        
+        - name: worst                                                                                    
+          image: docker.io/library/nginx
+          resources:                                                                                     
+            requests:                                                                                    
+              memory: 1024Mi                                                                             
+              cpu: 1000m                                                                                 
+            limits:                                                                                      
+              memory: 1024Mi                                                                             
+              cpu: 1000m                                                                                 
+          ports:                                                                                         
+            - name: http                                                                                 
+              containerPort: 80
