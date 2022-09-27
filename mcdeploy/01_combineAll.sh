@@ -32,15 +32,16 @@ done
 while read line
 do 
 echo $line
-i=$(echo $line | cut -d "." -f 2)
-j=$(echo $line | cut -d "." -f 3)
+ip1=$(echo $line | cut -d "." -f 2)
+ip2=$(echo $line | cut -d "." -f 3)
+break
 done < node_list
 
-ssh -o StrictHostKeyChecking=no root@10.$i.$j.3 sudo apt-get install vim -y
-ssh -o StrictHostKeyChecking=no root@10.$i.$j.3 ssh-keyscan 10.$i.$i.2 >> /root/.ssh/known_hosts
-ssh-keyscan 10.$i.$i.3 >> /root/.ssh/known_hosts
-ssh -o StrictHostKeyChecking=no root@10.$i.$j.3 mkdir /root/.kube
-scp /root/.kube/config root@10.$i.$j.3:/root/.kube
+ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 sudo apt-get install vim -y
+ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 ssh-keyscan 10.$ip1.$ip2.2 >> /root/.ssh/known_hosts
+ssh-keyscan 10.$ip1.$ip2.3 >> /root/.ssh/known_hosts
+ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 mkdir /root/.kube
+scp /root/.kube/config root@10.$ip1.$ip2.3:/root/.kube
 
 # Install helm3
 echo "Helm3"
