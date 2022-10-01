@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: mchpa
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: mchpa
+  template:
+    metadata:
+      labels:
+        app: mchpa
+    spec:
+      nodeSelector:
+        node-role.kubernetes.io/master: ""
+      tolerations:
+      - key: "node-role.kubernetes.io/master"
+        operator: "Equal"
+        effect: "NoSchedule"
+      serviceAccountName: rbac-mck8s
+      containers:
+      - image: docker.io/chuangtw/mchpa
+        name: mchpa
+        imagePullPolicy: Always
+        volumeMounts:
+        - mountPath: /root/.kube/config
+          name: kube-config
+        #resources:
+        #  requests:
+        #    cpu: 1000m
+        #    memory: 1024Mi
+      volumes:
+      - name: kube-config
+        hostPath:
+          path: /root/.kube/config
+          type: File
+
