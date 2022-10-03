@@ -1,4 +1,3 @@
-sed -i '1d' node_list
 port=30090
 j=1
 for i in $(cat node_list)

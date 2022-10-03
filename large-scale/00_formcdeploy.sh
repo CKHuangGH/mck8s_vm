@@ -1,12 +1,13 @@
-./01_combineAll.sh
-sleep 10
+ls /root/.kube/
+read -p "please enter the last cluster number in .kube: " number
+
+./01_combineAll.sh $number
+sleep 3
 ./createvalue.sh
-sleep 10
+sleep 3
 ./04_mck8s-2.sh
-sleep 10
-./05_joining_test.sh
-sleep 10
-./06_deployment.sh
+sleep 3
+./05_joining_test.sh $number
 #sleep 100
 # chmod 777 /root/mck8s_vm/error/01_status.sh
 # chmod 777 /root/mck8s_vm/error/02_run.sh
