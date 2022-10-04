@@ -1,0 +1,1 @@
+dool -t -c -m -n -N ens3 --freespace -s --output psr.csv 1 1200
