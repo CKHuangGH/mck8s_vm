@@ -30,12 +30,9 @@ break
 done < node_list
 
 ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 sudo apt-get install vim -y
-ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 ssh-keyscan 10.$ip1.$ip2.2 >> /root/.ssh/known_hosts
-ssh-keyscan 10.$ip1.$ip2.3 >> /root/.ssh/known_hosts
 ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 mkdir /root/.kube
 scp /root/.kube/config root@10.$ip1.$ip2.3:/root/.kube
 
-sed -i '1d' node_list
 cluster=1
 for i in $(cat node_list)
 do
@@ -65,7 +62,7 @@ do
 	helm install cilium cilium/cilium --version 1.11.4 --namespace kube-system --set cluster.name=cluster$i --set cluster.id=$i
 done
 
-sleep 3
+sleep 5
 
 for i in `seq 0 0`
 do
@@ -74,12 +71,13 @@ KUBE_EDITOR="sed -i s/metricsBindAddress:.*/metricsBindAddress:\ "0.0.0.0:10249"
 kubectl delete pod -l k8s-app=kube-proxy -n kube-system
 done
 
+sleep 5
+
 #Deploy metrics server
 #wget https://gist.githubusercontent.com/moule3053/1b14b7898fd473b4196bdccab6cc7b48/raw/916f4362bcde612d0f96af48bc7ef7b99ab06a1f/metrics_server.yaml
 for i in `seq 0 0`
 do
     kubectl --context=cluster$i create -f metrics_server.yaml
-    echo "wait for 2 secs"
 done
-
+sleep 5
 echo "-------------------------------------- OK --------------------------------------"

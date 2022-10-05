@@ -13,6 +13,7 @@ kubectl apply -f manifests/crds/
 #echo "Please apply mcs by youself"
 kubectl apply -f manifests/controllers/01_deployment_multi_cluster_scheduler.yaml
 kubectl apply -f manifests/controllers/02_deployment_multi_cluster_hpa.yaml
+echo "wait for 100 secs-----------------------------------------------"
 sleep 100
 
 kubectl get node
