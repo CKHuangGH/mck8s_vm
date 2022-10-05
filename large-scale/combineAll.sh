@@ -27,9 +27,8 @@ echo $line
 ip1=$(echo $line | cut -d "." -f 2)
 ip2=$(echo $line | cut -d "." -f 3)
 break
-done < node_list
-
-ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 sudo apt-get install vim -y
+done < node_list_all
+#ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 sudo apt-get install vim -y
 ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 mkdir /root/.kube
 scp /root/.kube/config root@10.$ip1.$ip2.3:/root/.kube
 
