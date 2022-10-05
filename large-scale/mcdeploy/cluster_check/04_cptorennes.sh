@@ -1,1 +1,0 @@
-scp -o StrictHostKeyChecking=no -r ./results chuang@172.16.111.106:/home/chuang/results

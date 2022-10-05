@@ -1,1 +1,0 @@
-scp -o StrictHostKeyChecking=no -r /root/mck8s_vm/error/results chuang@172.16.111.106:/home/chuang/results

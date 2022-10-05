@@ -1,4 +1,5 @@
-cluster=$1
+ls /root/.kube/
+read -p "please enter the last cluster number in .kube: " cluster
 
 for i in `seq 1 $cluster`
 do
@@ -12,3 +13,16 @@ kubectl apply -f manifests/crds/
 #echo "Please apply mcs by youself"
 kubectl apply -f manifests/controllers/01_deployment_multi_cluster_scheduler.yaml
 kubectl apply -f manifests/controllers/02_deployment_multi_cluster_hpa.yaml
+sleep 100
+
+kubectl get node
+kubectl get pod
+kubectl get pod -n monitoring
+for i in $(cat node_list)
+do
+	ssh -o StrictHostKeyChecking=no root@$i kubectl get node
+	ssh -o StrictHostKeyChecking=no root@$i kubectl get pod
+	ssh -o StrictHostKeyChecking=no root@$i kubectl get pod -n monitoring
+done
+
+echo "good to start run experiment-----------------------------------------------"
