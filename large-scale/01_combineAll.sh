@@ -1,5 +1,7 @@
 number=$1
 
+sudo apt-get install vim -y
+
 for i in `seq 0 $number`
 do
     sed -i 's/kubernetes-admin/k8s-admin-cluster'$i'/g' ~/.kube/cluster$i
