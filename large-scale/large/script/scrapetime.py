@@ -1,11 +1,9 @@
 import requests
 import time
 
-
-
 def test(hostip):
     prom_host=hostip
-    f = open("prom_scrape_rntsm", 'a')
+    f = open("prom_scrape_acala", 'a')
     prom_port = 30090
     prom_url = "http://" + str(prom_host) + ":" + \
                                 str(prom_port) + "/api/v1/targets"

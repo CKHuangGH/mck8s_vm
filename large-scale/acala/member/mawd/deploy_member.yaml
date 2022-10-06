@@ -1,18 +1,18 @@
 apiVersion: apps/v1
 kind: Deployment
 metadata:
-  name: acala-member-mawd
+  name: amember-mawd
   namespace: monitoring
 spec:
   replicas: 1
   selector:
     matchLabels:
-      app: acala-member-mawd
+      app: amember-mawd
   template:
     metadata:
-      name: acala-member-mawd
+      name: amember-mawd
       labels:
-        app: acala-member-mawd
+        app: amember-mawd
     spec:
       nodeSelector:
         node-role.kubernetes.io/master: ""
@@ -21,7 +21,7 @@ spec:
         operator: "Equal"
         effect: "NoSchedule"
       containers:
-      - name: acala-member-mawd
+      - name: amember-mawd
         image: chuangtw/acalamembermawd:latest
         imagePullPolicy: Always
         volumeMounts:
@@ -32,7 +32,7 @@ spec:
             cpu: 100m
             memory: 200Mi
         ports:
-        - name: acala-member-mawd
+        - name: amember-mawd
           containerPort: 54088
       volumes:
       - name: kube-config
@@ -43,16 +43,16 @@ spec:
 apiVersion: v1
 kind: Service
 metadata:
-  name: acala-member-mawd
+  name: amember-mawd
   namespace: monitoring
   labels:
-    name: acala-member-mawd
+    name: amember-mawd
 spec:
   selector:
-    app: acala-member-mawd
+    app: amember-mawd
   type: NodePort
   ports:
-  - name: acala-member-mawd
+  - name: amember-mawd
     protocol: TCP
     port: 54088
     nodePort: 31580

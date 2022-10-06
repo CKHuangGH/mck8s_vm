@@ -5,7 +5,7 @@ read -p "please enter the last cluster number in .kube: " number
 
 ./promvalue.sh
 ./combineAll.sh $number
-./mck8s-2.sh
+./mck8s-management.sh
 
 #./05_joining_test.sh $number
 # chmod 777 /root/mck8s_vm/error/01_status.sh

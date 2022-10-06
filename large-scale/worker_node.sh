@@ -21,7 +21,7 @@ kubectl config use-context cluster$cluster
 helm repo update
 helm install cilium cilium/cilium --version 1.11.4 --namespace kube-system --set cluster.name=cluster$cluster --set cluster.id=$cluster
 
-sleep 5
+sleep 10
 
 echo "kubeproxy edit-----------------------"
 ##kubeproxy modify
@@ -29,7 +29,7 @@ kubectl config use-context cluster$cluster
 KUBE_EDITOR="sed -i s/metricsBindAddress:.*/metricsBindAddress:\ "0.0.0.0:10249"/g" kubectl edit cm/kube-proxy -n kube-system
 kubectl delete pod -l k8s-app=kube-proxy -n kube-system
 echo "wait for 5 secs-------------------------"
-sleep 5
+sleep 10
 
 echo "Install Prometheus-----------------------"
 kubectl config use-context cluster$cluster
@@ -40,5 +40,3 @@ sleep 5
 
 echo "Install Metrics server-----------------------"
 kubectl --context=cluster$cluster create -f metrics_server.yaml
-echo "wait for 5 secs-------------------------"
-sleep 5
