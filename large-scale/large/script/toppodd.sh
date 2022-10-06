@@ -8,7 +8,7 @@ update_file_podD() {
 
 while ((PodDTime < 60))
 do
-  update_file_podD &
+  update_file_podD
   sleep $TimerForPodD;
   PodDTime=$PodDTime+1
 done

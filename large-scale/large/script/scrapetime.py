@@ -1,6 +1,11 @@
 import requests
 import time
+from kubernetes import client, config
+import kubernetes.client
 
+
+
+timeout_seconds=30
 def test(hostip):
     prom_host=hostip
     f = open("prom_scrape_acala", 'a')
@@ -35,7 +40,7 @@ def getControllerMasterIP():
     return master_ip
 
 i=0
-while i<1800:
+while i<60:
     hostip=getControllerMasterIP()
     test(hostip)
     time.sleep(1)

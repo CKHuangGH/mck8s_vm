@@ -1,5 +1,6 @@
 import requests
 import time
+
 def test():
     prom_host="10.158.0.2"
     f = open("prom_scrape_rntsm", 'a')
