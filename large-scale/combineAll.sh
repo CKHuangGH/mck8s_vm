@@ -40,6 +40,7 @@ do
 	ssh root@$i chmod 777 /root/mck8s_vm/large-scale/worker_node.sh
 	ssh root@$i sh /root/mck8s_vm/large-scale/worker_node.sh $cluster &
 	cluster=$((cluster+1))
+	#sleep 1
 done
 
 # Install helm3

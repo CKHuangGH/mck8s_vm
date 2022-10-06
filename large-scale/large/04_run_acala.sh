@@ -21,9 +21,10 @@ python3 scrapetime.py &
 ./scripet/topnode.sh 0 &
 ./scripet/toppodm.sh &
 
-ssh root@10.158.0.3 timeout 1800 tcpdump -i ens3 src port 31580 -nn -q >> cross  &
+ssh root@10.158.0.3 timeout 1800 tcpdump -i ens3 src port 31580 dst net 10.158.0.0/16 -nn -q >> cross  &
+ tcpdump -i ens3 src port 30090 and dst net 10.158.0.0/16 -nn -q
 
-
+ssh root@10.158.0.3 tcpdump -i ens3 src port 31580 
 for i in $(cat node_list)
 do 
 	sh /root/mck8s_vm/large-scale/large/scripet/topnode.sh $j &
