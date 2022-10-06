@@ -62,14 +62,14 @@ do
 	helm install cilium cilium/cilium --version 1.11.4 --wait --namespace kube-system --set cluster.name=cluster$i --set cluster.id=$i
 done
 
-# for i in `seq 0 0`
-# do
-# kubectl config use-context cluster$i
-# KUBE_EDITOR="sed -i s/metricsBindAddress:.*/metricsBindAddress:\ "0.0.0.0:10249"/g" kubectl edit cm/kube-proxy -n kube-system
-# kubectl delete pod -l k8s-app=kube-proxy -n kube-system
-# done
+for i in `seq 0 0`
+do
+kubectl config use-context cluster$i
+KUBE_EDITOR="sed -i s/metricsBindAddress:.*/metricsBindAddress:\ "0.0.0.0:10249"/g" kubectl edit cm/kube-proxy -n kube-system
+kubectl delete pod -l k8s-app=kube-proxy -n kube-system
+done
 
-# sleep 5
+sleep 5
 
 #Deploy metrics server
 #wget https://gist.githubusercontent.com/moule3053/1b14b7898fd473b4196bdccab6cc7b48/raw/916f4362bcde612d0f96af48bc7ef7b99ab06a1f/metrics_server.yaml
