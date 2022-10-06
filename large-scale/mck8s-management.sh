@@ -11,7 +11,7 @@ tar xzvf kubefedctl-0.9.1-linux-amd64.tgz
 mv kubefedctl /usr/local/bin/
 
 # Add helm chart
-sleep 3
+
 kubectl config use-context cluster0
 helm repo add kubefed-charts https://raw.githubusercontent.com/kubernetes-sigs/kubefed/master/charts
 helm repo update
