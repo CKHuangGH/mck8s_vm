@@ -9,7 +9,7 @@ update_file_node() {
   echo $(date +'%s.%N') | tee --append $NameForTopNode;
 }
 
-while ((NodeTime < 1800))
+while ((NodeTime < 60))
 do
   update_file_node
   sleep $TimerForNode;

@@ -1,5 +1,4 @@
 mkdir results
-cp /root/mck8s_vm/node_list ./results/node_list
 
 for i in $(cat node_list)
 do 
