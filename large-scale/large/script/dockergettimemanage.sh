@@ -1,4 +1,4 @@
-docker ps --format "{{.Names}}" | grep k8s_rntsm-dsia > name
+docker ps --format "{{.Names}}" | grep k8s_acala-controller > name
 for i in $(cat name)
 do
  docker cp $i:/exectime_management /root/

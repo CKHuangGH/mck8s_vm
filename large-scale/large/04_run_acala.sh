@@ -18,11 +18,11 @@ ssh root@10.$ip1.$ip2.3 timeout 60 tcpdump -i ens3 src port 31580 -nn -q >> cros
 j=1
 for i in $(cat node_list)
 do 
-	. /root/mck8s_vm/large-scale/large/script/toppodd.sh > /dev/null &
-	. /root/mck8s_vm/large-scale/large/script/toppodkf.sh > /dev/null &
-	. /root/mck8s_vm/large-scale/large/script/toppodks.sh > /dev/null &
-	. /root/mck8s_vm/large-scale/large/script/topnode.sh $j &
-	. /root/mck8s_vm/large-scale/large/script/toppodm.sh $j &
+	ssh root@$i . /root/mck8s_vm/large-scale/large/script/toppodd.sh > /dev/null &
+	ssh root@$i . /root/mck8s_vm/large-scale/large/script/toppodkf.sh > /dev/null &
+	ssh root@$i . /root/mck8s_vm/large-scale/large/script/toppodks.sh > /dev/null &
+	ssh root@$i . /root/mck8s_vm/large-scale/large/script/topnode.sh $j &
+	ssh root@$i . /root/mck8s_vm/large-scale/large/script/toppodm.sh $j &
 	j=$((j+1))	
 done
 echo "wait for 60 secs"
