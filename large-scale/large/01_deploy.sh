@@ -1,4 +1,5 @@
 cp ../node_list node_list
+cp ../node_list_all node_list_all
 
 for i in $(cat node_list)
 do

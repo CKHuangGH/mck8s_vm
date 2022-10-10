@@ -27,6 +27,6 @@ mv kubetopPodKF.csv /root/mck8s_vm/large-scale/large/results/kubetopPodKF.csv
 mv cross /root/mck8s_vm/large-scale/large/results/cross
 mv prom_scrape_acala /root/mck8s_vm/large-scale/large/results/prom_scrape_acala
 
-sleep 3
+#sleep 3
 
-scp -o StrictHostKeyChecking=no -r /root/mck8s_vm/large-scale/large/results chuang@172.16.111.106:/home/chuang/results
+#scp -o StrictHostKeyChecking=no -r /root/mck8s_vm/large-scale/large/results chuang@172.16.111.106:/home/chuang/results

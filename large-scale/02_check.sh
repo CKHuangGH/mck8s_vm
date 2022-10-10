@@ -9,3 +9,4 @@ do
 done
 
 echo "good to start run experiment-----------------------------------------------"
+echo "go to large folder and change the 01_deploy.sh-----------------------------------------------"
