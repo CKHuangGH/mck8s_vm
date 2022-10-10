@@ -25,5 +25,3 @@ do
 	ssh root@$i . /root/mck8s_vm/large-scale/large/script/toppodm.sh $j &
 	j=$((j+1))	
 done
-echo "wait for 60 secs"
-sleep 60

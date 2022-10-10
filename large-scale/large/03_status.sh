@@ -1,3 +1,4 @@
+end=$1
 mkdir results
 
 for i in $(cat node_list)
