@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: amember-mawd
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: amember-mawd
+  template:
+    metadata:
+      name: amember-mawd
+      labels:
+        app: amember-mawd
+    spec:
+      nodeSelector:
+        node-role.kubernetes.io/master: ""
+      tolerations:
+      - key: "node-role.kubernetes.io/master"
+        operator: "Equal"
+        effect: "NoSchedule"
+      containers:
+      - name: amember-mawd
+        image: chuangtw/acalamembermawd:latest
+        imagePullPolicy: Always
+        volumeMounts:
+        - mountPath: /root/.kube/config
+          name: kube-config
+        resources:
+          requests:
+            cpu: 100m
+            memory: 200Mi
+        ports:
+        - name: amember-mawd
+          containerPort: 54088
+      volumes:
+      - name: kube-config
+        hostPath:
+          path: /root/.kube/config
+          type: File
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: amember-mawd
+  namespace: monitoring
+  labels:
+    name: amember-mawd
+spec:
+  selector:
+    app: amember-mawd
+  type: NodePort
+  ports:
+  - name: amember-mawd
+    protocol: TCP
+    port: 54088
+    nodePort: 31580

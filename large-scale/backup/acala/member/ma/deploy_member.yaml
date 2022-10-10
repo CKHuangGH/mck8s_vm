@@ -1,0 +1,58 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: amember-ma
+  namespace: monitoring
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: amember-ma
+  template:
+    metadata:
+      name: amember-ma
+      labels:
+        app: amember-ma
+    spec:
+      nodeSelector:
+        node-role.kubernetes.io/master: ""
+      tolerations:
+      - key: "node-role.kubernetes.io/master"
+        operator: "Equal"
+        effect: "NoSchedule"
+      containers:
+      - name: amember-ma
+        image: chuangtw/acalamemberma:latest
+        imagePullPolicy: Always
+        volumeMounts:
+        - mountPath: /root/.kube/config
+          name: kube-config
+        resources:
+          requests:
+            cpu: 100m
+            memory: 200Mi
+        ports:
+        - name: amember-ma
+          containerPort: 54088
+      volumes:
+      - name: kube-config
+        hostPath:
+          path: /root/.kube/config
+          type: File
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: amember-ma
+  namespace: monitoring
+  labels:
+    name: amember-ma
+spec:
+  selector:
+    app: amember-ma
+  type: NodePort
+  ports:
+  - name: amember-ma
+    protocol: TCP
+    port: 54088
+    nodePort: 31580
