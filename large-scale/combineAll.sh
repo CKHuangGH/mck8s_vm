@@ -23,6 +23,8 @@ do
     kubectl config rename-context k8s-admin-cluster$i@kubernetes cluster$i
 done
 
+sleep 2
+
 while read line
 do 
 echo $line

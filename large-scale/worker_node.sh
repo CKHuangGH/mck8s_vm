@@ -38,3 +38,5 @@ sleep 5
 
 echo "Install Metrics server-----------------------"
 kubectl --context=cluster$cluster create -f metrics_server.yaml
+
+echo "Member clusters is ready"
