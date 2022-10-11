@@ -1,4 +1,5 @@
-end=$1
+cp ../node_list node_list
+cp ../node_list_all node_list_all
 mkdir results
 
 for i in $(cat node_list)
@@ -32,3 +33,9 @@ echo "-------------------------" >> ./results/status.txt
 kubectl --context cluster0 get pod  >> ./results/status.txt
 echo "-------------------------" >> ./results/status.txt
 kubectl --context cluster0 describe node >> ./results/status.txt
+
+
+. 04_run_acala.sh
+echo "wait for 1300 secs"
+sleep 1300
+. 05.getdocker.sh

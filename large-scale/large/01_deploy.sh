@@ -16,12 +16,3 @@ echo "wait 60s-------------------------------"
 sleep 60
 
 echo "Good for check"
-
-. 02_check.sh
-. 03_status.sh $j
-##change here
-. 04_run_acala.sh
-echo "wait for 60 secs"
-sleep 65
-echo "wait for 65 secs"
-. 05.getdocker.sh

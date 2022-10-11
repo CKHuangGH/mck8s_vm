@@ -6,7 +6,7 @@ update_file_podD() {
   echo $(date +'%s.%N') | tee --append $NameForPodD;
 }
 
-while ((PodDTime < 60))
+while ((PodDTime < 1200))
 do
   update_file_podD
   sleep $TimerForPodD;

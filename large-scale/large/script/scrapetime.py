@@ -40,7 +40,7 @@ def getControllerMasterIP():
     return master_ip
 
 i=0
-while i<60:
+while i<1200:
     hostip=getControllerMasterIP()
     test(hostip)
     time.sleep(1)
