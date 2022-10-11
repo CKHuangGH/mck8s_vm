@@ -1,4 +1,5 @@
-read -p "please enter the last cluster number in .kube: " cluster
+cat node_list
+read -p "which cluster need redeploy: " cluster
 
 echo "Install cilium-----------------------"
 kubectl config use-context cluster$cluster
