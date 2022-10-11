@@ -28,7 +28,7 @@ helm install cilium cilium/cilium --version 1.11.4 --wait --namespace kube-syste
 # kubectl delete pod -l k8s-app=kube-proxy -n kube-system
 # echo "wait for 5 secs-------------------------"
 # sleep 10
-sleep 5
+sleep 10
 echo "Install Prometheus-----------------------"
 kubectl config use-context cluster$cluster
 kubectl create ns monitoring
