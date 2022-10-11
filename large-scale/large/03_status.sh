@@ -36,6 +36,6 @@ kubectl --context cluster0 describe node >> ./results/status.txt
 
 
 . 04_run_acala.sh
-echo "wait for 1300 secs"
-sleep 1300
+echo "wait for 1500 secs"
+sleep 1500
 . 05.getdocker.sh
