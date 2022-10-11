@@ -63,7 +63,7 @@ for i in `seq 0 0`
 do
     kubectl config use-context cluster$i
 	helm repo update
-	helm install cilium cilium/cilium --version 1.11.4 --wait --namespace kube-system --set cluster.name=cluster$i --set cluster.id=$i
+	helm install cilium cilium/cilium --version 1.11.4 --wait --wait-for-jobs --namespace kube-system --set cluster.name=cluster$i --set cluster.id=$i
 done
 
 # for i in `seq 0 0`

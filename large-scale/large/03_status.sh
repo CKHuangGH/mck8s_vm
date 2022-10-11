@@ -33,9 +33,3 @@ echo "-------------------------" >> ./results/status.txt
 kubectl --context cluster0 get pod  >> ./results/status.txt
 echo "-------------------------" >> ./results/status.txt
 kubectl --context cluster0 describe node >> ./results/status.txt
-
-
-. 04_run_acala.sh
-echo "wait for 1500 secs"
-sleep 1500
-. 05.getdocker.sh
