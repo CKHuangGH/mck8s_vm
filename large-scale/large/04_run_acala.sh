@@ -26,6 +26,6 @@ do
 	j=$((j+1))	
 done
 
-echo "wait for 1500 secs"
-sleep 1500
+echo "wait for 1600 secs"
+sleep 1600
 . 05.getdocker.sh
