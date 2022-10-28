@@ -1,8 +1,8 @@
-import socket
+
 import gzip
 import time
 import shutil
-import requests
+from requests import post
 from prometheus_api_client import PrometheusConnect
 from kubernetes import client, config
 import kubernetes.client
@@ -52,23 +52,23 @@ def timewriter(text):
         print("Write error")
 
 def decompressfile(name,nameup):
-    start = time.perf_counter()
+    start = time.process_time()
     with gzip.open(name, 'rb') as f_in, open(nameup, 'wb') as f_out:
         shutil.copyfileobj(f_in, f_out)
-    end = time.perf_counter()
+    end = time.process_time()
     timewriter("decompressfile" + " " + str(end-start))
 
 def posttogateway(clustername,instance, name):
-    start = time.perf_counter()
+    start = time.process_time()
     gateway_host="127.0.0.1"
     gateway_port="9091"
     url = "http://" + str(gateway_host) + ":" + str(gateway_port) + "/metrics/job/" + clustername + "/instance/" + instance
-    res = requests.post(url=url,data=open(name, 'rb'),headers={'Content-Type': 'application/octet-stream'})
-    end = time.perf_counter()
+    res = post(url=url,data=name,headers={'Content-Type': 'application/octet-stream'})
+    end = time.process_time()
     timewriter("posttogateway" + " " + str(end-start))
 
 def getresources(mode,cluster):
-    start = time.perf_counter()
+    start = time.process_time()
     prom_host = getControllerMasterIP()
     prom_port = 30090
     prom_url = "http://" + str(prom_host) + ":" + str(prom_port)
@@ -85,11 +85,11 @@ def getresources(mode,cluster):
             resources[cluster] = float(result[0]['value'][1])
     else:
         print("Please input cpu or Memory")
-    end = time.perf_counter()
+    end = time.process_time()
     #timewriter("getresources" + " " + str(end-start))
 
 def decidetime(cluster, minlevel, timemax, maxlevel, timemin):
-    start = time.perf_counter()
+    start = time.process_time()
     current=resources[cluster]
     if current >= minlevel: 
         answer=(m*current)+b
@@ -99,7 +99,7 @@ def decidetime(cluster, minlevel, timemax, maxlevel, timemin):
     else:
         timedict[cluster]=timemax
     scrapetime[cluster]=timedict[cluster]
-    end = time.perf_counter()
+    end = time.process_time()
     #timewriter("decidetime" + " " + str(end-start))
 
 def parse_ip_port_name(data):
@@ -171,27 +171,23 @@ def modifyconfig():
 
 async def fetch(link, clientMessage, number):
     print('Send: %r' % clientMessage)
-    transtimestart = time.perf_counter()
+    transtimestart = time.process_time()
     reader, writer = await asyncio.open_connection(link, 31580)
+    #reader, writer = await asyncio.open_connection(link, 54088)
     writer.write(clientMessage.encode())
-    #client.sendall(clientMessage.encode())
-    fname = "after" + str(number) + ".gz"
-    with open(fname, "wb") as f:
-        while True:
-            bytes_read = await reader.read(BUFFER_SIZE)
-            if not bytes_read:    
-                break
-            f.write(bytes_read)
-            writer.close()
-    name= "after" + str(number)+".gz"
-    nameup="after"+ str(number)
-    transtimeend = time.perf_counter()
-    timewriter("scrape" + " " + str(transtimeend-transtimestart))
-    decompressfile(name,nameup)
-    whichone=number+1
-    clustername="cluster"+str(whichone)
+    while True:
+        bytes_read = await reader.read(BUFFER_SIZE)
+        if not bytes_read:    
+            break
+        metrics = gzip.decompress(bytes_read)
+        writer.close()
+
+    #print(metrics,type(metrics))
+    transtimeend = time.process_time()
+    timewriter("scrapeanddecompress" + " " + str(transtimeend-transtimestart))
+    clustername="cluster"+str(number+1)
     try:
-        posttogateway(clustername,ipdict[clustername],nameup)
+        posttogateway(clustername,ipdict[clustername],metrics)
     except:
         print("post-fail")
         return "post-fail"
@@ -202,27 +198,26 @@ async def tcp_echo_client(links,clientMessage):
     try:
         fail=await asyncio.gather(*tasks)
         if fail[0]=="post-fail":
-            return "rntsm:1"
+            return "acala:1"
         else:
-            return "rntsm"
+            return "acala"
     except:
         print("oneofthem-fail")    
-        return "rntsm"
+        return "acala"
 
 if __name__ == "__main__":
-    perparestart = time.perf_counter()
-    minlevel, timemax, maxlevel, timemin=20,60,40,5
+    perparestart = time.process_time()
+    #minlevel, timemax, maxlevel, timemin=20,60,40,5
     read_member_cluster()
-    getformule(minlevel, timemax, maxlevel, timemin)
-    BUFFER_SIZE=8192
-    perpareend = time.perf_counter()
+    #getformule(minlevel, timemax, maxlevel, timemin)
+    clientMessage = "acala:1"
+    perpareend = time.process_time()
     timewriter("perpare" + " " + str(perpareend-perparestart))
-    clientMessage = "rntsm:1"
     loop = asyncio.get_event_loop()
     while True:
-        print(clientMessage)
-        totaltimestart = time.perf_counter()
+        #print(clientMessage)
+        totaltimestart = time.process_time()
         clientMessage=loop.run_until_complete(tcp_echo_client(scrapelist,clientMessage))
-        totaltimeend = time.perf_counter()
+        totaltimeend = time.process_time()
         timewriter("onescrapetotaltime" + " " + str(totaltimeend-totaltimestart))
         time.sleep(5)
