@@ -13,7 +13,7 @@ python3 ./script/scrapetime.py &
 . ./script/topnode.sh 0 > /dev/null &
 . ./script/toppodm.sh 0 &
 
-ssh root@10.$ip1.$ip2.3 timeout 1200 tcpdump -i ens3 src port 31580 -nn -q >> cross  &
+ssh root@10.$ip1.$ip2.3 timeout 1800 tcpdump -i ens3 src port 31580 -nn -q >> cross  &
 
 j=1
 for i in $(cat node_list)
@@ -27,5 +27,5 @@ do
 done
 
 echo "wait for 1600 secs"
-sleep 1600
+sleep 2400
 . 05.getdocker.sh

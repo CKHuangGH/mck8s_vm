@@ -6,7 +6,7 @@ update_file_podks() {
   echo $(date +'%s.%N') | tee --append $NameForPodKS;
 }
 
-while ((PodKSTime < 1200))
+while ((PodKSTime < 1800))
 do
   update_file_podks
   sleep $TimerForPodKS;
