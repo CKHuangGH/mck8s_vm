@@ -1,15 +1,10 @@
-
 import gzip
 import time
 from requests import post
-from prometheus_api_client import PrometheusConnect
 from kubernetes import config
 import kubernetes.client
-import base64
-import yaml
 import logging
 import asyncio
-
 
 ipdict={}
 portdict={}
@@ -18,6 +13,7 @@ resources = {}
 scrapetime = {}
 scrapelist=[]
 timeout_seconds = 30
+
 logging.basicConfig(level=logging.INFO)
 
 def getControllerMasterIP():
@@ -44,7 +40,6 @@ def timewriter(text):
         f.close()
     except:
         print("Write error")
-
 
 def posttogateway(clustername,instance, name):
     start = time.perf_counter()
@@ -75,11 +70,15 @@ async def fetch(link, clientMessage, number):
     reader, writer = await asyncio.open_connection(link, 31580)
     #reader, writer = await asyncio.open_connection(link, 54088)
     writer.write(clientMessage.encode())
+    
+    rawmetrics = bytearray()
     while True:
         bytes_read = await reader.read(BUFFER_SIZE)
-        if not bytes_read:    
+        if not bytes_read:
             break
-    metrics = gzip.decompress(bytes_read)
+        rawmetrics += bytes_read
+
+    metrics = gzip.decompress(rawmetrics)
     writer.close()
     clustername="cluster"+str(number+1)
     transtimeend = time.perf_counter()
