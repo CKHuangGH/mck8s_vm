@@ -18,14 +18,15 @@ ssh root@10.$ip1.$ip2.3 timeout 1800 tcpdump -i ens3 src port 31580 -nn -q >> cr
 j=1
 for i in $(cat node_list)
 do 
-	ssh root@$i . /root/mck8s_vm/large-scale/large/script/toppodd.sh > /dev/null &
-	ssh root@$i . /root/mck8s_vm/large-scale/large/script/toppodkf.sh > /dev/null &
-	ssh root@$i . /root/mck8s_vm/large-scale/large/script/toppodks.sh > /dev/null &
-	ssh root@$i . /root/mck8s_vm/large-scale/large/script/topnode.sh $j > /dev/null &
-	ssh root@$i . /root/mck8s_vm/large-scale/large/script/toppodm.sh $j &
+	#ssh root@$i . /root/mck8s_vm/saci/saci/script/toppodd.sh > /dev/null &
+	#ssh root@$i . /root/mck8s_vm/saci/saci/script/toppodkf.sh > /dev/null &
+	#ssh root@$i . /root/mck8s_vm/saci/saci/script/toppodks.sh > /dev/null &
+	ssh root@$i . /root/mck8s_vm/saci/saci/script/topnode.sh $j > /dev/null &
+	ssh root@$i . /root/mck8s_vm/saci/saci/script/toppodm.sh $j > /dev/null &
+	ssh root@$i . /root/mck8s_vm/saci/saci/script/getpod.sh $j &
 	j=$((j+1))	
 done
 
-echo "wait for 1600 secs"
+echo "wait for 2400 secs"
 sleep 2400
-. 05.getdocker.sh
+. 03.getdocker.sh

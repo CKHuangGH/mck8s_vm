@@ -12,7 +12,7 @@ kubectl apply -f manifests/crds/01_rbac_mck8s.yaml
 kubectl apply -f manifests/crds/
 #echo "Please apply mcs by youself"
 kubectl apply -f manifests/controllers/mcsv2.yaml
-kubectl apply -f manifests/controllers/02_deployment_multi_cluster_hpa.yaml
+#kubectl apply -f manifests/controllers/02_deployment_multi_cluster_hpa.yaml
 
 kubectl get node
 kubectl get pod
