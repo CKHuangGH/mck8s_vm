@@ -6,14 +6,14 @@ ip2=$(echo $line | cut -d "." -f 3)
 break
 done < node_list_all
 
-python3 ./script/scrapetime.py &
+#python3 ./script/scrapetime.py &
 . ./script/toppodd.sh > /dev/null &
 . ./script/toppodkf.sh > /dev/null &
 . ./script/toppodks.sh > /dev/null &
 . ./script/topnode.sh 0 > /dev/null &
 . ./script/toppodm.sh 0 > /dev/null &
 
-ssh root@10.$ip1.$ip2.3 timeout 5700 tcpdump -i ens3 src port 31580 -nn -q >> cross  &
+ssh root@10.$ip1.$ip2.3 timeout 5700 tcpdump -i ens3 src port 30090 -nn -q >> cross  &
 
 j=1
 for i in $(cat node_list)
