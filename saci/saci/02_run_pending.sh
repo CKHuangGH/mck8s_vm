@@ -11,7 +11,7 @@ python3 ./script/scrapetime.py &
 . ./script/toppodkf.sh > /dev/null &
 . ./script/toppodks.sh > /dev/null &
 . ./script/topnode.sh 0 > /dev/null &
-. ./script/toppodm.sh 0 &
+. ./script/toppodm.sh 0 > /dev/null &
 
 ssh root@10.$ip1.$ip2.3 timeout 5700 tcpdump -i ens3 src port 31580 -nn -q >> cross  &
 

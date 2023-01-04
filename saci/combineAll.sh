@@ -4,6 +4,7 @@ apt-get update
 sudo apt-get install vim -y
 sudo apt install python3-pip -y
 pip3 install kubernetes
+pip3 install pandas
 
 for i in `seq 0 $number`
 do
