@@ -13,7 +13,7 @@ python3 ./script/scrapetime.py &
 . ./script/topnode.sh 0 > /dev/null &
 . ./script/toppodm.sh 0 &
 
-ssh root@10.$ip1.$ip2.3 timeout 1800 tcpdump -i ens3 src port 31580 -nn -q >> cross  &
+ssh root@10.$ip1.$ip2.3 timeout 5700 tcpdump -i ens3 src port 31580 -nn -q >> cross  &
 
 j=1
 for i in $(cat node_list)
@@ -27,6 +27,8 @@ do
 	j=$((j+1))	
 done
 
-echo "wait for 2400 secs"
-sleep 2400
+python3 /root/k8s_google_injection/run_deployments_jobs_mck8s_worst_fit.py
+
+echo "wait for 1800 secs"
+sleep 1800
 . 03.getdocker.sh
