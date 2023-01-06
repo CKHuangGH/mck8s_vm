@@ -29,6 +29,6 @@ done
 
 python3 /root/k8s_google_injection/run_deployments_jobs_mck8s_worst_fit.py
 
-echo "wait for 1800 secs"
-sleep 1800
+echo "wait for 2400 secs"
+sleep 2400
 . 03.getdocker.sh

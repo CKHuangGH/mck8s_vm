@@ -30,6 +30,7 @@ mv kubetopNodecluster0.csv /root/mck8s_vm/saci/saci/results/kubetopNodecluster0.
 mv kubetopPodMcluster0.csv /root/mck8s_vm/saci/saci/results/kubetopPodMcluster0.csv
 mv cross /root/mck8s_vm/saci/saci/results/cross
 mv prom_scrape_acala /root/mck8s_vm/saci/saci/results/prom_scrape_acala
+mv mck8s_multiclusterscheduling_cloud_logs* results/
 
 sleep 3
 
