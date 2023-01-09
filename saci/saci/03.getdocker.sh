@@ -3,8 +3,8 @@ for i in $(cat node_list)
 do 
     #ssh -o StrictHostKeyChecking=no root@$i . /root/mck8s_vm/large-scale/large/script/dockergetime.sh
     #scp root@$i:/root/exectime /root/mck8s_vm/large-scale/large/results/exectime_cluster$j
-	scp root@$i:/root/kubetopNodecluster$j.csv /root/mck8s_vm/saci/saci/results/kubetopNodecluster$j.csv
-	scp root@$i:/root/kubetopPodMcluster$j.csv /root/mck8s_vm/saci/saci/results/kubetopPodMcluster$j.csv
+	#scp root@$i:/root/kubetopNodecluster$j.csv /root/mck8s_vm/saci/saci/results/kubetopNodecluster$j.csv
+	#scp root@$i:/root/kubetopPodMcluster$j.csv /root/mck8s_vm/saci/saci/results/kubetopPodMcluster$j.csv
 	scp root@$i:/root/kubegetpodcluster$j.csv /root/mck8s_vm/saci/saci/results/kubegetpodcluster$j.csv
 	j=$((j+1))	
 done
