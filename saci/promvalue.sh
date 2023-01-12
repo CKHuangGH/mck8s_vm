@@ -14,7 +14,7 @@ do
 	echo "        params:" >> values.yaml
 	echo "          match[]:" >> values.yaml
 	echo "            - '{instance=~\"10.$ip1.$ip2.2:9100\"}'" >> values.yaml
-	echo "            - '{instance=~\"10.$ip1.$ip2.6:9100\"}'" >> values.yaml
+	echo "            - '{instance=~\"10.$ip1.$ip2.3:9100\"}'" >> values.yaml
 	echo "            - '{instance=~\"10.$ip1.$ip2.4:9100\"}'" >> values.yaml
 	echo "            - '{instance=~\"10.$ip1.$ip2.5:9100\"}'" >> values.yaml
 	echo "            - '{instance=~\"10.$ip1.$ip2.6:9100\"}'" >> values.yaml
