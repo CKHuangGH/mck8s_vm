@@ -5,6 +5,8 @@ sudo apt-get install vim -y
 sudo apt install python3-pip -y
 pip3 install kubernetes
 pip3 install pandas
+pip3 install pint
+pip3 install prometheus_api_client
 
 for i in `seq 0 $number`
 do
