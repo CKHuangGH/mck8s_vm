@@ -1,5 +1,5 @@
-docker ps --format "{{.Names}}" | grep k8s_acala-controller > name
+docker ps --format "{{.Names}}" | grep k8s_mcs_multiclusterscheduler > name
 for i in $(cat name)
 do
- docker cp $i:/exectime_management /root/
+ docker cp $i:/logs.csv /root/
 done
