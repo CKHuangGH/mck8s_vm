@@ -11,7 +11,7 @@ done < node_list_all
 #. ./script/toppodkf.sh > /dev/null &
 #. ./script/toppodks.sh > /dev/null &
 #. ./script/topnode.sh 0 > /dev/null &
-#. ./script/toppodm.sh 0 > /dev/null &
+. ./script/toppodm.sh 0 > /dev/null &
 
 ssh root@10.$ip1.$ip2.3 timeout 6000 tcpdump -i ens3 src port 30090 -nn -q >> cross  &
 

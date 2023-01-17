@@ -1,4 +1,4 @@
-prometheusConfigReloader:
+prometheus:
   resources:
     requests:
       cpu: 1000m
