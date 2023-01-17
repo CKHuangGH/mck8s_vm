@@ -627,6 +627,11 @@ def getFogAppLocations(app_name, app_namespace, app_cpu_request, app_memory_requ
         print("Final list of clusters which will host the app in the Default case ....", fogapp_locations)
 
         #fogapp_locations = fogapp_locations[:clusters_qty]
+        f=open("logs.csv","a")
+        f.write(str(app_name))
+        f.write(","+str(fogapp_locations)+"\n")
+        f.close()
+
         return fogapp_locations
 
 def getFogAppClusters(name, namespace):
