@@ -23,6 +23,8 @@ done < node_list_all
 #scp root@10.$ip1.$ip2.3:/root/exectime_management /root/mck8s_vm/large-scale/large/results/exectime_management
 
 . /root/mck8s_vm/saci/saci/script/dockergettimemanage.sh
+kubectl logs multiclusterscheduler* > log.txt
+mv logs.txt /root/mck8s_vm/saci/saci/results/logs.txt
 mv /root/logs.csv /root/mck8s_vm/saci/saci/results/logs.csv
 mv kubetopPodD.csv /root/mck8s_vm/saci/saci/results/kubetopPodD.csv
 mv kubetopPodKS.csv /root/mck8s_vm/saci/saci/results/kubetopPodKS.csv
