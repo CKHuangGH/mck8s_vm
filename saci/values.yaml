@@ -7,6 +7,15 @@ kubeEtcd:
   service:
     port: 2381
     targetPort: 2381
+additionalPrometheusRulesMap:
+  rule-name:
+    groups:
+    - name: my_group
+      rules:
+      - record: record5s
+        expr: ((sum(increase(node_cpu_seconds_total{mode="idle"}[15s]))by (instance))/(sum(increase(node_cpu_seconds_total[15s]))by (instance)))*100
+      - record: record60s
+        expr: ((sum(increase(node_cpu_seconds_total{mode="idle"}[3m]))by (instance))/(sum(increase(node_cpu_seconds_total[3m]))by (instance)))*100
 prometheus:
   prometheusSpec:
     resources:
