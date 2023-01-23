@@ -27,8 +27,8 @@ do
 	j=$((j+1))	
 done
 
-#python3 /root/k8s_google_injection/run_deployments_jobs_mck8s_worst_fit.py
-python3 /root/k8s_google_injection/run_deployments_jobs_low.py
+python3 /root/k8s_google_injection/run_deployments_jobs_mck8s_worst_fit.py
+#python3 /root/k8s_google_injection/run_deployments_jobs_low.py
 echo "wait for 2400 secs"
 sleep 3600
 . 03.getdocker.sh
