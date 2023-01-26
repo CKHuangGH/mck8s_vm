@@ -3,7 +3,7 @@ kind: Deployment
 metadata:
   name: multiclusterscheduler
 spec:
-  replicas: 2
+  replicas: 1
   selector:
     matchLabels:
       app: multiclusterscheduler
@@ -28,7 +28,7 @@ spec:
           name: kube-config
         resources:
           requests:
-            cpu: 1000m
+            cpu: 2000m
             memory: 1024Mi
       volumes:
       - name: kube-config
