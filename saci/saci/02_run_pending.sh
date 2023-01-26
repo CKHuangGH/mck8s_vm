@@ -29,11 +29,13 @@ done
 
 python3 /root/k8s_google_injection/run_deployments_jobs_mck8s_worst_fit.py
 # sleep 1200
+#mv /root/logs10.csv /root/logs1.csv
 # ./ delmcs.sh
 # sleep 1200
+#mv /root/logs10.csv /root/logs2.csv
 # ./ delmcs.sh
 # sleep 1200
 #python3 /root/k8s_google_injection/run_deployments_jobs_low.py
-echo "wait for 2400 secs"
+echo "wait for 3600 secs"
 sleep 3600
 . 03.getdocker.sh
