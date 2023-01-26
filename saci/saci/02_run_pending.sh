@@ -27,12 +27,12 @@ do
 	j=$((j+1))	
 done
 
-python3 /root/k8s_google_injection/run_deployments_jobs_mck8s_worst_fit.py &
-sleep 1200
-./ delmcs.sh
-sleep 1200
-./ delmcs.sh
-sleep 1200
+python3 /root/k8s_google_injection/run_deployments_jobs_mck8s_worst_fit.py
+# sleep 1200
+# ./ delmcs.sh
+# sleep 1200
+# ./ delmcs.sh
+# sleep 1200
 #python3 /root/k8s_google_injection/run_deployments_jobs_low.py
 echo "wait for 2400 secs"
 sleep 3600
