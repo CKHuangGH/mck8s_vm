@@ -7,10 +7,10 @@ do
     logs="$(kubectl logs --tail=1 $mcsname)"
     echo $logs
     if [ "$logs" = "$lastlogs" ]; then
-	    ./ delmcs.sh $j
+	    . /delmcs.sh $j
         j=$((j+1))
         sleep 30
     fi
-    sleep 15
+    sleep 30
     lastlogs=$logs
 done
