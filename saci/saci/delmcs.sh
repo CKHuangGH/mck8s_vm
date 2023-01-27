@@ -1,13 +1,9 @@
+number=$1
 docker ps --format "{{.Names}}" | grep k8s_mcs_multiclusterscheduler > name
-j=10
 for i in $(cat name)
 do
-    docker cp $i:/logs.csv /root/logs$j.csv
-    j=$((j+1))
+    docker cp $i:/logs.csv /root/mck8s_vm/saci/saci/results/logs$number.csv
 done
 
-kubectl get pod -o custom-columns=NAME:.metadata.name > mcsname
-for i in $(cat mcsname)
-do
-    kubectl delete pod $i
-done
+mcsname=$(kubectl get pod -o custom-columns=NAME:.metadata.name | grep multiclusterscheduler)
+kubectl delete pod $mcsname
