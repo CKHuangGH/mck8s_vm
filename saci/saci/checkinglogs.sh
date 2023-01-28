@@ -7,7 +7,7 @@ do
     logs="$(kubectl logs --tail=1 $mcsname)"
     echo $logs
     if [ "$logs" = "$lastlogs" ]; then
-	    . /delmcs.sh $j
+	    . /root/mck8s_vm/saci/saci/delmcs.sh $j
         j=$((j+1))
         sleep 30
     fi
