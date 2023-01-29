@@ -9,8 +9,8 @@ do
     if [ "$logs" = "$lastlogs" ]; then
 	    . /root/mck8s_vm/saci/saci/delmcs.sh $j
         j=$((j+1))
-        sleep 30
+        sleep 60
     fi
-    sleep 30
+    sleep 60
     lastlogs=$logs
 done
