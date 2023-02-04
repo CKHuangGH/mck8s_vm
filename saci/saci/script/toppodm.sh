@@ -8,7 +8,7 @@ update_file_podm() {
   echo $(date +'%s.%N') | tee --append $NameForPodM;
 }
 
-while ((PodMTime < 5700))
+while ((PodMTime < 6000))
 do
   update_file_podm
   sleep $TimerForPodM;
