@@ -11,6 +11,6 @@ do
         j=$((j+1))
         sleep 60
     fi
-    sleep 60
     lastlogs=$logs
+    sleep 120
 done
