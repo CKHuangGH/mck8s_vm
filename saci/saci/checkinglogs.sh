@@ -6,8 +6,12 @@ do
     #echo $mcsname
     logs="$(kubectl logs --tail=1 $mcsname)"
     echo $logs
+
     if [ "$logs" = "$lastlogs" ]; then
 	    . /root/mck8s_vm/saci/saci/delmcs.sh $j
+        if [ $j -eq 3 ]; then
+            break
+        fi
         j=$((j+1))
         sleep 60
     fi
