@@ -27,7 +27,8 @@ do
 	j=$((j+1))	
 done
 
-python3 /root/k8s_google_injection/run_deployments_jobs_mck8s_worst_fit.py &
+#python3 /root/k8s_google_injection/run_deployments_jobs_mck8s_worst_fit.py &
+python3 /root/k8s_google_injection/run_deployments_jobs_low.py &
 sleep 120
 . checkinglogs.sh &
 echo "wait for 7200 secs"
