@@ -3,7 +3,7 @@ cluster=$1
 
 #modify the address for kubeproxy
 echo "copy metrics_server.yaml-----------------------"
-mv /root/mck8s_vm/saci/metrics_server.yaml /root/
+mv /root/mck8s_vm/sasi/metrics_server.yaml /root/
 
 echo "Install Helm3-----------------------"
 wget -c https://get.helm.sh/helm-v3.8.2-linux-amd64.tar.gz
@@ -33,7 +33,7 @@ echo "Install Prometheus-----------------------"
 kubectl config use-context cluster$cluster
 kubectl create ns monitoring
 sleep 2
-helm install --version 34.10.0 prometheus-community/kube-prometheus-stack --generate-name --wait --wait-for-jobs --set grafana.service.type=NodePort --set grafana.service.nodePort=30099 --set prometheus.service.type=NodePort --set prometheus.prometheusSpec.scrapeInterval="5s" --namespace monitoring --values /root/mck8s_vm/saci/values_worker.yaml
+helm install --version 34.10.0 prometheus-community/kube-prometheus-stack --generate-name --wait --wait-for-jobs --set grafana.service.type=NodePort --set grafana.service.nodePort=30099 --set prometheus.service.type=NodePort --set prometheus.prometheusSpec.scrapeInterval="5s" --namespace monitoring --values /root/mck8s_vm/sasi/values_worker.yaml
 echo "wait for 5 secs-------------------------"
 sleep 5
 

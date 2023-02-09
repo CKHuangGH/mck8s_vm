@@ -45,8 +45,8 @@ for i in $(cat node_list)
 do
 	ssh-keyscan $i >> /root/.ssh/known_hosts
 	scp /root/.kube/config root@$i:/root/.kube
-	ssh root@$i chmod 777 /root/mck8s_vm/saci/worker_node.sh
-	ssh root@$i sh /root/mck8s_vm/saci/worker_node.sh $cluster &
+	ssh root@$i chmod 777 /root/mck8s_vm/sasi/worker_node.sh
+	ssh root@$i sh /root/mck8s_vm/sasi/worker_node.sh $cluster &
 	cluster=$((cluster+1))
 	sleep 2
 done

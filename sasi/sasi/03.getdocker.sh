@@ -3,9 +3,9 @@ for i in $(cat node_list)
 do 
     #ssh -o StrictHostKeyChecking=no root@$i . /root/mck8s_vm/large-scale/large/script/dockergetime.sh
     #scp root@$i:/root/exectime /root/mck8s_vm/large-scale/large/results/exectime_cluster$j
-	#scp root@$i:/root/kubetopNodecluster$j.csv /root/mck8s_vm/saci/saci/results/kubetopNodecluster$j.csv
-	#scp root@$i:/root/kubetopPodMcluster$j.csv /root/mck8s_vm/saci/saci/results/kubetopPodMcluster$j.csv
-	scp root@$i:/root/kubegetpodcluster$j.csv /root/mck8s_vm/saci/saci/results/kubegetpodcluster$j.csv
+	#scp root@$i:/root/kubetopNodecluster$j.csv /root/mck8s_vm/sasi/sasi/results/kubetopNodecluster$j.csv
+	#scp root@$i:/root/kubetopPodMcluster$j.csv /root/mck8s_vm/sasi/sasi/results/kubetopPodMcluster$j.csv
+	scp root@$i:/root/kubegetpodcluster$j.csv /root/mck8s_vm/sasi/sasi/results/kubegetpodcluster$j.csv
 	j=$((j+1))	
 done
 
@@ -19,23 +19,23 @@ ip2=$(echo $line | cut -d "." -f 3)
 break
 done < node_list_all
 
-#ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 . /root/mck8s_vm/saci/saci/script/dockergettimemanage.sh
+#ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 . /root/mck8s_vm/sasi/sasi/script/dockergettimemanage.sh
 #scp root@10.$ip1.$ip2.3:/root/exectime_management /root/mck8s_vm/large-scale/large/results/exectime_management
 
-. /root/mck8s_vm/saci/saci/script/dockergettimemanage.sh
+. /root/mck8s_vm/sasi/sasi/script/dockergettimemanage.sh
 #kubectl logs multiclusterscheduler* > log.txt
-#mv logs.txt /root/mck8s_vm/saci/saci/results/logs.txt
-mv kubetopPodD.csv /root/mck8s_vm/saci/saci/results/kubetopPodD.csv
-mv kubetopPodKS.csv /root/mck8s_vm/saci/saci/results/kubetopPodKS.csv
-mv kubetopPodKF.csv /root/mck8s_vm/saci/saci/results/kubetopPodKF.csv
-mv kubetopNodecluster0.csv /root/mck8s_vm/saci/saci/results/kubetopNodecluster0.csv
-mv kubetopPodMcluster0.csv /root/mck8s_vm/saci/saci/results/kubetopPodMcluster0.csv
-mv cross /root/mck8s_vm/saci/saci/results/cross
-mv prom_scrape_acala /root/mck8s_vm/saci/saci/results/prom_scrape_acala
+#mv logs.txt /root/mck8s_vm/sasi/sasi/results/logs.txt
+mv kubetopPodD.csv /root/mck8s_vm/sasi/sasi/results/kubetopPodD.csv
+mv kubetopPodKS.csv /root/mck8s_vm/sasi/sasi/results/kubetopPodKS.csv
+mv kubetopPodKF.csv /root/mck8s_vm/sasi/sasi/results/kubetopPodKF.csv
+mv kubetopNodecluster0.csv /root/mck8s_vm/sasi/sasi/results/kubetopNodecluster0.csv
+mv kubetopPodMcluster0.csv /root/mck8s_vm/sasi/sasi/results/kubetopPodMcluster0.csv
+mv cross /root/mck8s_vm/sasi/sasi/results/cross
+mv prom_scrape_acala /root/mck8s_vm/sasi/sasi/results/prom_scrape_acala
 mv multi_cluster_scheduling_logs* results/
 
 sleep 3
 
-scp -o StrictHostKeyChecking=no -r /root/mck8s_vm/saci/saci/results chuang@172.16.111.106:/home/chuang/results
+scp -o StrictHostKeyChecking=no -r /root/mck8s_vm/sasi/sasi/results chuang@172.16.111.106:/home/chuang/results
 
 echo "-----------------------copy ok -------------------------------"

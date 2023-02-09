@@ -8,7 +8,7 @@ do
     echo $logs
 
     if [ "$logs" = "$lastlogs" ]; then
-	    . /root/mck8s_vm/saci/saci/delmcs.sh $j
+	    . /root/mck8s_vm/sasi/sasi/delmcs.sh $j
         if [ $j -eq 3 ]; then
             break
         fi

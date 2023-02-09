@@ -18,12 +18,12 @@ ssh root@10.$ip1.$ip2.3 timeout 6000 tcpdump -i ens3 src port 30090 -nn -q >> cr
 j=1
 for i in $(cat node_list)
 do 
-	#ssh root@$i . /root/mck8s_vm/saci/saci/script/toppodd.sh > /dev/null &
-	#ssh root@$i . /root/mck8s_vm/saci/saci/script/toppodkf.sh > /dev/null &
-	#ssh root@$i . /root/mck8s_vm/saci/saci/script/toppodks.sh > /dev/null &
-	#ssh root@$i . /root/mck8s_vm/saci/saci/script/topnode.sh $j > /dev/null &
-	#ssh root@$i . /root/mck8s_vm/saci/saci/script/toppodm.sh $j > /dev/null &
-	ssh root@$i . /root/mck8s_vm/saci/saci/script/getpod.sh $j > /dev/null &
+	#ssh root@$i . /root/mck8s_vm/sasi/sasi/script/toppodd.sh > /dev/null &
+	#ssh root@$i . /root/mck8s_vm/sasi/sasi/script/toppodkf.sh > /dev/null &
+	#ssh root@$i . /root/mck8s_vm/sasi/sasi/script/toppodks.sh > /dev/null &
+	#ssh root@$i . /root/mck8s_vm/sasi/sasi/script/topnode.sh $j > /dev/null &
+	#ssh root@$i . /root/mck8s_vm/sasi/sasi/script/toppodm.sh $j > /dev/null &
+	ssh root@$i . /root/mck8s_vm/sasi/sasi/script/getpod.sh $j > /dev/null &
 	j=$((j+1))	
 done
 
