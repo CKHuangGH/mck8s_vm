@@ -7,7 +7,7 @@ pip3 install kubernetes
 pip3 install pandas
 pip3 install pint
 pip3 install prometheus_api_client
-
+pip3 install aiohttp
 for i in `seq 0 $number`
 do
     sed -i 's/kubernetes-admin/k8s-admin-cluster'$i'/g' ~/.kube/cluster$i
