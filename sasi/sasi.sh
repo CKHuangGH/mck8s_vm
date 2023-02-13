@@ -31,6 +31,7 @@ do
 	echo "$q:$port:$name" >> member	
     j=$((j+1))				
 done
-mv member /root/member
+
+cp member /root/member
 
 scp member root@10.$ip1.$ip2.3:/root/member
