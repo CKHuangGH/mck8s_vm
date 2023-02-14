@@ -19,13 +19,6 @@ prometheus:
     - key: "node-role.kubernetes.io/master"
       operator: "Equal"
       effect: "NoSchedule"
-    resources:
-      requests:
-        cpu: 1000m
-        memory: 1024Mi
-      limits:
-        cpu: 2000m
-        memory: 1024Mi
 prometheus-node-exporter:
   resources:
     requests:
