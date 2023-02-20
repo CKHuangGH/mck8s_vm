@@ -1,3 +1,4 @@
+th=$1
 i=$(awk "NR==1" node_list_all)
 port=30901
 echo "      - job_name: 'sasi' " >> values.yaml
@@ -28,7 +29,7 @@ j=1
 for q in $(cat node_list)
 do
     name=cluster$j
-	echo "$q:$port:$name" >> member	
+	echo "$q:$port:$name:$th" >> member	
     j=$((j+1))				
 done
 
