@@ -19,8 +19,8 @@ ip2=$(echo $line | cut -d "." -f 3)
 break
 done < node_list_all
 
-#ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 . /root/mck8s_vm/sasi/sasi/script/dockergettimemanage.sh
-#scp root@10.$ip1.$ip2.3:/root/exectime_management /root/mck8s_vm/large-scale/large/results/exectime_management
+ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 . /root/mck8s_vm/sasi/sasi/script/dockergettime.sh
+scp root@10.$ip1.$ip2.3:/root/scrapetime /root/mck8s_vm/sasi/sasi/results/scrapetime
 
 . /root/mck8s_vm/sasi/sasi/script/dockergettimemanage.sh
 #kubectl logs multiclusterscheduler* > log.txt
