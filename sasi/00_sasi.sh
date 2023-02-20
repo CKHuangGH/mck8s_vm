@@ -7,8 +7,6 @@ read -p "please enter the threshold: " threshold
 ./combineAll.sh $number
 ./mck8s-management.sh
 
-kubectl apply -f /root/DASI/deploy_sasi.yaml
-
 #./05_joining_test.sh $number
 # chmod 777 /root/mck8s_vm/error/01_status.sh
 # chmod 777 /root/mck8s_vm/error/02_run.sh
