@@ -19,7 +19,7 @@ ip2=$(echo $line | cut -d "." -f 3)
 break
 done < node_list_all
 
-ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 . /root/mck8s_vm/sasi/sasi/script/dockergettime.sh
+ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 . /root/mck8s_vm/sasi/sasi/script/dockergetime.sh
 scp root@10.$ip1.$ip2.3:/root/scrapetime /root/mck8s_vm/sasi/sasi/results/scrapetime
 
 . /root/mck8s_vm/sasi/sasi/script/dockergettimemanage.sh
