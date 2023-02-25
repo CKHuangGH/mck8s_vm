@@ -35,7 +35,7 @@ mv prom_scrape_acala /root/mck8s_vm/sasi/sasi/results/prom_scrape_acala
 mv multi_cluster_scheduling_logs* results/
 
 sleep 3
-
-scp -o StrictHostKeyChecking=no -r /root/mck8s_vm/sasi/sasi/results chuang@172.16.111.106:/home/chuang/results
+random_number=$((1 + $RANDOM))
+scp -o StrictHostKeyChecking=no -r /root/mck8s_vm/sasi/sasi/results chuang@172.16.111.106:/home/chuang/results$random_number
 
 echo "-----------------------copy ok -------------------------------"
