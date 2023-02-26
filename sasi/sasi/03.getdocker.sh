@@ -33,6 +33,7 @@ mv kubetopPodMcluster0.csv /root/mck8s_vm/sasi/sasi/results/kubetopPodMcluster0.
 mv cross /root/mck8s_vm/sasi/sasi/results/cross
 mv prom_scrape_acala /root/mck8s_vm/sasi/sasi/results/prom_scrape_acala
 mv multi_cluster_scheduling_logs* results/
+mv /root/member /root/mck8s_vm/sasi/sasi/results/member
 
 sleep 3
 random_number=$((1 + $RANDOM))
