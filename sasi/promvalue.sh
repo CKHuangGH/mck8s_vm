@@ -20,9 +20,6 @@ do
 	echo "            - '{instance=~\"10.$ip1.$ip2.6:9100\"}'" >> values.yaml
 	echo "            - '{instance=~\"10.$ip1.$ip2.7:9100\"}'" >> values.yaml
 	echo "            - '{instance=~\"10.$ip1.$ip2.8:9100\"}'" >> values.yaml
-	echo "            - '{instance=~\"10.$ip1.$ip2.9:9100\"}'" >> values.yaml
-	echo "            - '{instance=~\"10.$ip1.$ip2.10:9100\"}'" >> values.yaml
-	echo "            - '{instance=~\"10.$ip1.$ip2.11:9100\"}'" >> values.yaml
 	echo "        tls_config:" >> values.yaml	
 	echo "          insecure_skip_verify: true" >> values.yaml		
 	echo "        static_configs:" >> values.yaml	
