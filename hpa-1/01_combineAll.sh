@@ -1,5 +1,7 @@
 ## install vim
+apt-get update
 sudo apt-get install vim -y
+sudo apt install python3-pip -y
 
 for i in `seq 0 0`
 do
