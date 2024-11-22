@@ -1,4 +1,13 @@
 sed -i '1d' node_list
+
+while read line
+do 
+echo $line
+ip1=$(echo $line | cut -d "." -f 2)
+ip2=$(echo $line | cut -d "." -f 3)
+break
+done < node_list
+
 port=31580
 j=1
 for i in $(cat node_list)
@@ -8,4 +17,4 @@ do
     j=$((j+1))				
 done
 #mv member /root/member
-scp member root@10.158.0.3:/root/member
+scp member root@10.$ip1.$ip2.3:/root/member
