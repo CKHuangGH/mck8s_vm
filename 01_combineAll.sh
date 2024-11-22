@@ -1,5 +1,17 @@
 ## install vim
+sudo apt update -y
 sudo apt-get install vim -y
+
+
+while read line
+do 
+echo $line
+ip1=$(echo $line | cut -d "." -f 2)
+ip2=$(echo $line | cut -d "." -f 3)
+break
+done < node_list
+
+
 
 for i in `seq 0 1`
 do
@@ -29,11 +41,11 @@ do
 	ssh root@$i mv dool-1.0.0/dool /usr/local/bin/
     ssh root@$i mv dool-1.0.0/plugins/ /usr/local/bin/
 done
-ssh -o StrictHostKeyChecking=no root@10.158.0.3 sudo apt-get install vim -y
-ssh -o StrictHostKeyChecking=no root@10.158.0.3 ssh-keyscan 10.158.0.2 >> /root/.ssh/known_hosts
-ssh-keyscan 10.158.0.3 >> /root/.ssh/known_hosts
-ssh -o StrictHostKeyChecking=no root@10.158.0.3 mkdir /root/.kube
-scp /root/.kube/config root@10.158.0.3:/root/.kube
+ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 sudo apt-get install vim -y
+ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 ssh-keyscan 10.$ip1.$ip2.2 >> /root/.ssh/known_hosts
+ssh-keyscan 10.$ip1.$ip2.3 >> /root/.ssh/known_hosts
+ssh -o StrictHostKeyChecking=no root@10.$ip1.$ip2.3 mkdir /root/.kube
+scp /root/.kube/config root@10.$ip1.$ip2.3:/root/.kube
 
 # Install helm3
 echo "Helm3"
