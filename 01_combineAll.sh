@@ -1,5 +1,5 @@
 ## install vim
-sudo apt update
+
 sudo apt-get install vim -y
 
 
