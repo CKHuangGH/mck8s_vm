@@ -1,3 +1,4 @@
+cp node_list node_list_all
 ./01_combineAll.sh
 sleep 10
 ./02_acalavalue.sh
