@@ -13,4 +13,23 @@ python3 scrapetime.py &
 ./vmdool.sh &
 ./topnode.sh &
 ./toppodm.sh &
-ssh root@10.158.0.3 timeout 1200 tcpdump -i ens3 src port 31580 and host 10.158.4.2 -nn -q >> cross  &
+
+
+while read line
+do 
+echo $line
+ip1=$(echo $line | cut -d "." -f 2)
+ip2=$(echo $line | cut -d "." -f 3)
+break
+done < node_list_all
+
+
+while read line
+do 
+echo $line
+ip3=$(echo $line | cut -d "." -f 2)
+ip4=$(echo $line | cut -d "." -f 3)
+break
+done < node_list
+
+ssh root@10.$ip1.$ip2.3 timeout 1200 tcpdump -i ens3 src port 31580 and host 10.$ip3.$ip4.2 -nn -q >> cross  &
