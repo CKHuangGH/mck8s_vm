@@ -1,3 +1,4 @@
+mkdir results
 chmod 777 topnode.sh
 chmod 777 toppodd.sh
 chmod 777 toppodkf.sh
