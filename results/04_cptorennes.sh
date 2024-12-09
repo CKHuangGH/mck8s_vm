@@ -12,4 +12,5 @@ mv cross /root/mck8s_vm/results/results/cross
 mv prom_scrape_rntsm /root/mck8s_vm/results/results/prom_scrape_rntsm
 mv exectime /root/mck8s_vm/results/results/exectime
 mv exectime_management /root/mck8s_vm/results/results/exectime_management
-scp -r /root/mck8s_vm/results/results chuang@172.16.111.106:/home/chuang/results
+random_number=$((1 + $RANDOM))
+scp -o StrictHostKeyChecking=no -r /root/mck8s_vm/results/results chuang@172.16.111.106:/home/chuang/results$random_number
